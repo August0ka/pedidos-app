@@ -50,4 +50,13 @@ class OrdersController extends Controller
             return response()->json(['message' => $e->getMessage()], 500);
         }
     }
+
+    public function consultOrders() {
+        $orders = Order::get();
+        if($orders->isEmpty()) {
+            return response()->json(['message' => 'Nenhum pedido encontrado'], 404);
+        }
+
+        return response()->json($orders);
+    }
 }
