@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Order;
 use Carbon\Carbon;
 use Exception;
-use Illuminate\Http\Request;
 
 class OrdersController extends Controller
 {
     public function index() {
         $orderStatusCollect = collect(Order::ORDER_STATUS);
         $orderStatus = $orderStatusCollect->prepend('Selecione...', '');
-        $orders = Order::all();
+        $orders = Order::orderByDesc('id')->get();
 
         return view('orders.index', compact('orderStatus', 'orders'));
     }
@@ -52,7 +52,7 @@ class OrdersController extends Controller
     }
 
     public function consultOrders() {
-        $orders = Order::get();
+        $orders = Order::orderByDesc('id')->get();
         if($orders->isEmpty()) {
             return response()->json(['message' => 'Nenhum pedido encontrado'], 404);
         }
