@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('client_name');
             $table->dateTime('order_date');
             $table->dateTime('delivery_date');
-            $table->string('status');
+            $table->smallInteger('status');
             $table->timestamps();
         });
     }
