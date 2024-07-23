@@ -18,11 +18,16 @@ class OrdersController extends Controller
     }
 
     public function store (Request $request) {
-        if($request->get('client_name') == null || $request->get('order_date') == null || $request->get('delivery_date') == null || $request->get('status') == null) {
+        if(!$request->get('client_name') || !$request->get('order_date') || !$request->get('delivery_date') || !$request->get('status')) {
             return response()->json(['message' => 'Todos os campos são obrigatórios'], 500);
         }
+        try {
+            $order = Order::create($request->all());
+            return response()->json(['message' => 'Pedido criado com sucesso!']);
+        } catch (Exception $e) {
+            return response()->json(['message' => 'Erro ao criar pedido'], 500);
+        }
 
-        Order::create($request->all());
     }
 
     public function edit(Order $order) {
@@ -38,8 +43,11 @@ class OrdersController extends Controller
     }
 
     public function destroy(Order $order) {
-        $order->delete();
-
-        return response()->json(['message' => 'Pedido deletados com sucesso!']);
+        try {
+            $order->delete();
+            return response()->json(['message' => 'Pedido deletado com sucesso!']);
+        } catch (Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
     }
 }

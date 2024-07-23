@@ -15,7 +15,6 @@
 </head>
 
 <body class="bg-gray-100">
-
     <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
         type="button"
         class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
@@ -123,7 +122,7 @@
                             </tr>
                             @empty
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <td class="px-6 py-4" colspan="5">
+                                <td class="px-6 py-4" colspan="6">
                                     Nenhum pedido encontrado
                                 </td>
                             </tr>
@@ -220,7 +219,7 @@
                 const status = $('#status').val();
 
                 $.ajax({
-                    url: '/orders/store',
+                    url: 'api/orders/store',
                     type: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': token
@@ -234,7 +233,7 @@
                     success: function (response) {
                         Swal.fire({
                             title: "Sucesso!",
-                            text: "Pedido criado com sucesso!",
+                            text: response.message,
                             showConfirmButton: true,
                             confirmButtonColor: '#3085d6',
                             confirmButtonText: "Ok",
@@ -275,7 +274,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: `/orders/${orderId}/destroy`,
+                            url: `api/orders/${orderId}/destroy`,
                             type: 'DELETE',
                             headers: {
                                 'X-CSRF-TOKEN': token
@@ -339,7 +338,7 @@
                 const status = $('#status').val();
 
                 $.ajax({
-                    url: `/orders/${orderId}/update`,
+                    url: `api/orders/${orderId}/update`,
                     type: 'PUT',
                     headers: {
                         'X-CSRF-TOKEN': token
