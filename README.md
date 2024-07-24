@@ -46,6 +46,9 @@ password = password
 #### Execute as migrations
 ``./vendor/bin/sail artisan migrate``
 
+#### Acessar localhost
+http://localhost
+
 ## Documentação da API
 
 #### Retorna todos os itens
