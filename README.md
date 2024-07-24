@@ -25,6 +25,7 @@ docker run --rm \
 ```
 
 #### Copie o conteúdo de .env.example para .env
+```cp .env.example .env```
 
 #### Suba os contêineres (Esse processo pode demorar um pouco)
 ``./vendor/bin/sail up``
