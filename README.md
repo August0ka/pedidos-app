@@ -19,11 +19,8 @@ Necessário ter php e composer na máquina
     -u "$(id -u):$(id -g)" \
     -v "$(pwd):/var/www/html" \
     -w /var/www/html \
-    laravelsail/php82-composer:latest``
-
-#### Instale o composer
- ``composer install --ignore-platform-reqs`` ou\
- ``composer update``
+    laravelsail/php82-composer:latest \
+    composer install --ignore-platform-reqs``
 
 #### Copie o conteúdo de .env.example para .env
 
