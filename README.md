@@ -3,6 +3,8 @@
 
 Projeto feito com objetivo de criar um CRUD com o tema controle de pedidos utilizando uma única tela para executar todas as ações.
 
+## Requisitos
+Necessário ter php e composer na máquina 
 
 ## Instalação
 
@@ -12,10 +14,24 @@ Projeto feito com objetivo de criar um CRUD com o tema controle de pedidos utili
 #### Mude para a pasta
 ``cd pedidos-app``
 
+#### Instale o Sail 
+``docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php82-composer:latest``
+
+#### Instale o composer
+ ``composer install --ignore-platform-reqs`` ou\
+ ``composer update``
+
 #### Copie o conteúdo de .env.example para .env
 
-#### Suba os contêineres (Esse processo pode demarar um pouco)
+#### Suba os contêineres (Esse processo pode demorar um pouco)
 ``./vendor/bin/sail up``
+
+#### Gere a key para o projeto
+``./vendor/bin/sail artisan key:generate``
 
 #### Execute as migrations
 ``./vendor/bin/sail artisan migrate``
