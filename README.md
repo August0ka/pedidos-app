@@ -15,12 +15,14 @@ Necessário ter php e composer na máquina
 ``cd pedidos-app``
 
 #### Instale o Sail 
-``docker run --rm \
+```sh
+docker run --rm \
     -u "$(id -u):$(id -g)" \
     -v "$(pwd):/var/www/html" \
     -w /var/www/html \
     laravelsail/php82-composer:latest \
-    composer install --ignore-platform-reqs``
+    composer install --ignore-platform-reqs
+```
 
 #### Copie o conteúdo de .env.example para .env
 
@@ -89,5 +91,3 @@ Necessário ter php e composer na máquina
 | Parâmetro   | 
 | :---------- |
 | `sem parâmetro` |
-
-
