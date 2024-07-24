@@ -27,8 +27,18 @@ docker run --rm \
 #### Copie o conteúdo de .env.example para .env
 ```cp .env.example .env```
 
+#### Valores padrão para conectar ao banco de dados local
+
+connection = mysql\
+host = localhost\
+port = 3306\
+database = laravel\
+username = sail\
+password = password
+
+
 #### Suba os contêineres (Esse processo pode demorar um pouco)
-``./vendor/bin/sail up``
+``./vendor/bin/sail up -d``
 
 #### Gere a key para o projeto
 ``./vendor/bin/sail artisan key:generate``
